@@ -119,7 +119,9 @@ class Jackett(_PluginBase):
             domain = site["domain"].split('//')[-1]
             logger.info((domain, site))
             self._sites_helper.add_indexer(domain, site)
-        return True if isinstance(self._sites, list) and len(self._sites) > 0 else False
+        if isinstance(self._sites, list) and len(self._sites) > 0:
+            return True
+        logger.error("Jackett 索引器获取失败")
 
     def get_indexers(self):
         """
