@@ -115,8 +115,7 @@ class Jackett(_PluginBase):
             # logger.info(site["site_link"], site)
             # if not site["site_link"] or site["site_link"] == "":
             #     continue
-            # domain = site["site_link"].split('//')[-1].split('/')[0]
-            domain = site["domain"].split('//')[-1]
+            domain = site["site_link"]
             logger.info((domain, site))
             self._sites_helper.add_indexer(domain, site)
         if isinstance(self._sites, list) and len(self._sites) > 0:
@@ -185,18 +184,18 @@ class Jackett(_PluginBase):
                             "details": {
                                 "selector": "comments",
                             },
-                            # "download": {
-                            #     "selector": 'td:nth-child(3) > a[href*="/download/"]',
-                            #     "attribute": "href",
-                            # },
-                            # "date_added": {"selector": "td:nth-child(5)"},
+                            "download": {
+                                "selector": 'td:nth-child(3) > a[href*="/download/"]',
+                                "attribute": "href",
+                            },
+                            "date_added": {"selector": "td:nth-child(5)"},
                             "size": {"selector": "size"},
                             "seeders": {
                                 "selector": 'torznab:attr[name="seeders"]',
                                 "attribute": "value",
                             },
-                            # "leechers": {"selector": "td:nth-child(7)"},
-                            # "grabs": {"selector": "td:nth-child(8)"},
+                            "leechers": {"selector": "td:nth-child(7)"},
+                            "grabs": {"selector": "td:nth-child(8)"},
                             "downloadvolumefactor": {"case": {"*": 0}},
                             "uploadvolumefactor": {"case": {"*": 1}},
                         },
