@@ -168,7 +168,7 @@ class Jackett(_PluginBase):
                     "search": {
                         "paths": [
                             {
-                                "path": f"api/v2.0/indexers/{v["id"]}/results/torznab/api?apikey={self._api_key}&t=search&q={{keyword}}",
+                                "path": f'api/v2.0/indexers/{v["id"]}/results/torznab/api?apikey={self._api_key}&t=search&q={{keyword}}',
                                 "method": "get",
                             }
                         ]
